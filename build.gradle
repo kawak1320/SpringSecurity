@@ -13,7 +13,6 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.amazonaws.serverless:aws-serverless-java-container-springboot2:1.8.2'
 	implementation 'io.symphonia:lambda-logging:1.0.3'
 	implementation ('software.amazon.awscdk:lambda:1.163.1') {
