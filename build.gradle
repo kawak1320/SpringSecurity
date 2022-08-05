@@ -1,0 +1,54 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'org.jala.foundation'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.amazonaws.serverless:aws-serverless-java-container-springboot2:1.5.2'
+	implementation 'io.symphonia:lambda-logging:1.0.1'
+	implementation ('software.amazon.awscdk:lambda:1.112.0') {
+		exclude group: 'software.amazon.awssdk', module: 'netty-nio-client'
+		exclude group: 'software.amazon.awssdk', module: 'apache-client'
+	}
+	implementation 'software.amazon.awssdk:lambda:2.16.99'
+	implementation 'software.amazon.awssdk:url-connection-client:2.16.99'
+	implementation 'software.amazon.awssdk:bom:2.11.4'
+	implementation 'com.amazonaws:aws-java-sdk-bom:1.12.21'
+	implementation 'com.amazonaws:aws-lambda-java-core:1.2.0'
+	implementation 'com.amazonaws:aws-java-sdk-cognitoidp:1.11.759'
+	testImplementation 'software.amazon.awssdk:url-connection-client:2.16.99'
+	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.amazonaws:aws-java-sdk-cognitoidp:1.11.1019'
+	implementation 'org.projectlombok:lombok:1.18.20'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'com.auth0:jwks-rsa:0.20.0'
+	implementation 'com.auth0:java-jwt:3.18.2'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor("org.projectlombok:lombok:1.18.20")
+}
+
+test {
+	useJUnitPlatform()
+}
