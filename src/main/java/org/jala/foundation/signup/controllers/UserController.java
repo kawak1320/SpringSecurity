@@ -22,6 +22,7 @@ public class UserController {
     }
     @PostMapping(path = "/sign-in")
     public @ResponseBody  UserSignInResponse signIn(@RequestBody UserSignIn userSignInRequest) throws CognitoUserException {
+        // validate if token has expired
         return userAuthenticationService.signIn(userSignInRequest);
     }
     @GetMapping(path = "/details")
