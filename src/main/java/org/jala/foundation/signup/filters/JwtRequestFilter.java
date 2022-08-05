@@ -16,7 +16,7 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
     public static final String AUTHORIZATION = "Authorization";
     public static final String BEARER = "Bearer ";
-    private static final Logger logger = LoggerFactory.getLogger(JwtRequestFilter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtRequestFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -24,11 +24,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if (!isPublicUrl(request.getRequestURI())) {
             String token = parseToken(request);
-            logger.info("Extracted token: " + token);
+            LOGGER.info("Extracted token: " + token);
 
             // TODO: Replace this code with call to am Authorizer Lambda
 //            boolean result = jwtValidator.validateJwtToken(token);
-//            logger.info("Jwt Token is valid? " + result);
+//            LOGGER.info("Jwt Token is valid? " + result);
         }
         filterChain.doFilter(request, response);
     }
