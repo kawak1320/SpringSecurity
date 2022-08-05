@@ -21,15 +21,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtRequestFilter jwtRequestFilter;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         List<String> permitAllEndpointList = Arrays.asList(SIGNUP_URL, SIGNIN_URL);
-
         http.cors().and().csrf().disable()
                 .authorizeRequests(expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry
                         .antMatchers(permitAllEndpointList.toArray(new String[permitAllEndpointList.size()]))
                         .permitAll().anyRequest().authenticated())
                 .oauth2ResourceServer().jwt();
-
         http.addFilterBefore(jwtRequestFilter, BearerTokenAuthenticationFilter.class);
     }
 }

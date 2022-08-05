@@ -73,7 +73,6 @@ public class JwtValidator {
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
         }
-
         return false;
     }
 }

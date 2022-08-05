@@ -1,10 +1,8 @@
 package org.jala.foundation.signup.filters;
 
 import org.jala.foundation.signup.configurations.ConfigurationConstants;
-//import org.jala.foundation.signup.services.JwtValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -20,13 +18,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     public static final String BEARER = "Bearer ";
     private static final Logger logger = LoggerFactory.getLogger(JwtRequestFilter.class);
 
-//    @Autowired
-//    private JwtValidator jwtValidator;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if ( ! isPublicUrl(request.getRequestURI())) {
+        if (!isPublicUrl(request.getRequestURI())) {
             String token = parseToken(request);
             logger.info("Extracted token: " + token);
 
@@ -34,16 +30,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 //            boolean result = jwtValidator.validateJwtToken(token);
 //            logger.info("Jwt Token is valid? " + result);
         }
-
         filterChain.doFilter(request, response);
     }
     private String parseToken(HttpServletRequest request) {
         final String authorizationValue = request.getHeader(AUTHORIZATION);
-
         if (authorizationValue != null && authorizationValue.startsWith(BEARER)) {
             return authorizationValue.substring(7);
         }
-
         return null;
     }
     private boolean isPublicUrl(String incomingUri) {

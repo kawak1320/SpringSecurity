@@ -20,9 +20,7 @@ public class CognitoConfig {
     private String jwkUrl;
     @Bean
     public AWSCognitoIdentityProvider cognitoClient() {
-
         BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
-
         return AWSCognitoIdentityProviderClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(awsRegion)
                 .build();

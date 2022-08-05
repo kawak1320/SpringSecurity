@@ -8,8 +8,6 @@ import org.jala.foundation.signup.models.UserSignInResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import com.amazonaws.services.cognitoidp.model.ListUsersRequest;
-
 import java.util.HashMap;
 import java.util.Map;
 @Service

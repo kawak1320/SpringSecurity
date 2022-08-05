@@ -26,7 +26,6 @@ public class UserController {
     }
     @GetMapping(path = "/details")
     public @ResponseBody  UserDetail getUserDetail() {
-
         UserDetail userDetail = new UserDetail();
         userDetail.setFirstName("TestUser");
         userDetail.setLastName("BuddyG");
